@@ -15,12 +15,11 @@ env:
   - TOXENV="py${PYTHON_VERSION//./}"
 
 install:
-  - make dependencies
+  - make develop
   - pip install coveralls
 
 script:
   - make test
-  - make lint
 
 after_success:
   - coveralls
