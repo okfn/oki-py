@@ -44,5 +44,5 @@ For example to check subset of tests against Python 2 environment with increased
 All positional arguments and options after `--` will be passed to `py.test`:
 
 ```
-tox -e py27 tests/<path> -- -v
+tox -e py27 -- -v tests/<path>
 ```
