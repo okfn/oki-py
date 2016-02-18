@@ -5,7 +5,6 @@ from __future__ import absolute_import
 
 import os
 import io
-import json
 from setuptools import setup, find_packages
 
 
