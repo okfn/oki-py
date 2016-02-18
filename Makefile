@@ -1,33 +1,28 @@
-.PHONY: all list version dependencies test lint release
+.PHONY: all develop list lint test version
 
-PACKAGE := oki
-VERSION := $(shell head -n 1 oki/VERSION)
 
-all: test
+PACKAGE := $(shell grep '^PACKAGE =' setup.py | cut -d "'" -f2)
+VERSION := $(shell head -n 1 $(PACKAGE)/VERSION)
 
-# http://stackoverflow.com/questions/4219255/how-do-you-get-the-list-of-targets-in-a-makefile
-list:
-	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: \
-	'/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | \
-	sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | xargs
 
-version:
-	@echo $(VERSION)
-
-dependencies:
-	pip install --upgrade tox pytest twine wheel
+all: list
 
 develop:
-	pip install -e .
-	make dependencies
+	pip install --upgrade -e .[develop]
 
-test:
-	py.test tests/* --cov $(PACKAGE) --cov-report term-missing
+list:
+	@grep '^\.PHONY' Makefile | cut -d' ' -f2- | tr ' ' '\n'
 
 lint:
 	pylint $(PACKAGE)
 
 release:
-	git tag $(VERSION)
+	bash -c '[[ -z `git status -s` ]]'
+	git tag -a -m release $(VERSION)
 	git push --tags
-	python setup.py sdist bdist_wheel --universal && twine upload dist/*
+
+test:
+	tox
+
+version:
+	@echo $(VERSION)

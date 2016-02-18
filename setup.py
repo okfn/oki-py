@@ -5,40 +5,53 @@ from __future__ import absolute_import
 
 import os
 import io
+import json
 from setuptools import setup, find_packages
 
-BASEDIR = os.path.dirname(__file__)
+
+# Helpers
+def read(*paths):
+    """Read a text file."""
+    basedir = os.path.dirname(__file__)
+    fullpath = os.path.join(basedir, *paths)
+    contents = io.open(fullpath, encoding='utf-8').read().strip()
+    return contents
 
 
-def read(f, method='read'):
-    """Read a text file at the given relative path."""
-    filepath = os.path.join(BASEDIR, f)
-    return getattr(io.open(filepath, encoding='utf-8'), method)().strip()
-
+# Prepare
 PACKAGE = 'oki'
-VERSION = read(os.path.join(BASEDIR, PACKAGE, 'VERSION'), 'readline')
+INSTALL_REQUIRES = [
+    'six>=1.9',
+]
+LINT_REQUIRES = [
+    'pylint',
+]
+TESTS_REQUIRE = [
+    'tox',
+]
 README = read('README.md')
-LICENSE = read('LICENSE.md')
-INSTALL_REQUIRES = ['six>=1.9']
-TESTS_REQUIRE = ['tox']
+VERSION = read(PACKAGE, 'VERSION')
+PACKAGES = find_packages(exclude=['examples', 'tests'])
 
+
+# Run
 setup(
     name=PACKAGE,
     version=VERSION,
-    description='We want the data raw, and we want the data now.',
-    long_description=README,
-    author='Open Knowledge International',
-    author_email='info@okfn.org',
-    url='https://github.com/okfn/opendata-py',
-    license='MIT',
+    packages=PACKAGES,
     include_package_data=True,
-    packages=find_packages(exclude=['tests']),
-    package_dir={PACKAGE: PACKAGE},
     install_requires=INSTALL_REQUIRES,
     tests_require=TESTS_REQUIRE,
-    test_suite='make test',
+    extras_require = {'develop': LINT_REQUIRES + TESTS_REQUIRE},
+    test_suite='tox',
     zip_safe=False,
-    keywords='raw data',
+    long_description=README,
+    description='{{ DESCRIPTION }}',
+    author='Open Knowledge Foundation',
+    author_email='info@okfn.org',
+    url='https://github.com/okfn/oki-py',
+    license='MIT',
+    keywords="data",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
@@ -53,5 +66,5 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules'
-    ]
+    ],
 )
