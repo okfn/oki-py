@@ -1,6 +1,6 @@
 global-include VERSION
-include .pylintrc
 include LICENSE.md
 include Makefile
+include pylintrc
 include README.md
 include tox.ini
