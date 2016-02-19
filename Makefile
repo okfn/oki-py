@@ -1,4 +1,4 @@
-.PHONY: all develop list lint test version
+.PHONY: all develop list lint release test version
 
 
 PACKAGE := $(shell grep '^PACKAGE =' setup.py | cut -d "'" -f2)
