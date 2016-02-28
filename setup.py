@@ -31,8 +31,6 @@ TESTS_REQUIRE = [
 README = read('README.md')
 VERSION = read(PACKAGE, 'VERSION')
 PACKAGES = find_packages(exclude=['examples', 'tests'])
-INSTALL_REQUIRES = ['six>=1.9']
-TESTS_REQUIRE = ['tox']
 
 
 # Run
