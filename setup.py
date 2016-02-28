@@ -51,7 +51,9 @@ setup(
     author_email='info@okfn.org',
     url='https://github.com/okfn/oki-py',
     license='MIT',
-    keywords="data",
+    keywords=[
+        'data',
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
@@ -65,6 +67,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: Python Modules'
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
