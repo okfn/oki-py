@@ -19,6 +19,7 @@ def read(*paths):
 
 # Prepare
 PACKAGE = 'oki'
+NAME = PACKAGE.replace('_', '-')
 INSTALL_REQUIRES = [
     'six>=1.9',
 ]
