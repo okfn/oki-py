@@ -19,6 +19,7 @@ def read(*paths):
 
 # Prepare
 PACKAGE = 'oki'
+NAME = PACKAGE.replace('_', '-')
 INSTALL_REQUIRES = [
     'six>=1.9',
 ]
@@ -35,7 +36,7 @@ PACKAGES = find_packages(exclude=['examples', 'tests'])
 
 # Run
 setup(
-    name=PACKAGE,
+    name=NAME,
     version=VERSION,
     packages=PACKAGES,
     include_package_data=True,
