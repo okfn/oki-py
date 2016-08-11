@@ -23,10 +23,8 @@ NAME = PACKAGE.replace('_', '-')
 INSTALL_REQUIRES = [
     'six>=1.9',
 ]
-LINT_REQUIRES = [
-    'pylint',
-]
 TESTS_REQUIRE = [
+    'pylama',
     'tox',
 ]
 README = read('README.md')
@@ -42,7 +40,7 @@ setup(
     include_package_data=True,
     install_requires=INSTALL_REQUIRES,
     tests_require=TESTS_REQUIRE,
-    extras_require={'develop': LINT_REQUIRES + TESTS_REQUIRE},
+    extras_require={'develop': TESTS_REQUIRE},
     zip_safe=False,
     long_description=README,
     description='{{ DESCRIPTION }}',
