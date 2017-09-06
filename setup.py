@@ -44,7 +44,7 @@ setup(
     zip_safe=False,
     long_description=README,
     description='{{ DESCRIPTION }}',
-    author='Open Knowledge Foundation',
+    author='Open Knowledge International',
     author_email='info@okfn.org',
     url='https://github.com/okfn/oki-py',
     license='MIT',
