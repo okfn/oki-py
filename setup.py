@@ -24,7 +24,6 @@ INSTALL_REQUIRES = [
     'six>=1.9',
 ]
 TESTS_REQUIRE = [
-    'pylama',
     'tox',
 ]
 README = read('README.md')

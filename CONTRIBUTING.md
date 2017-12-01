@@ -26,7 +26,7 @@ as described in documentation - https://pylama.readthedocs.io/en/latest/.
 For example to sort results by error type:
 
 ```
-$ pylama --sort <path>
+$ tox -e lint -- --sort <path>
 ```
 
 For testing `tox` configured in `tox.ini` is used.
