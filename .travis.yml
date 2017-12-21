@@ -13,9 +13,9 @@ language:
   python
 
 python:
+  - 3.6
   - 3.5
-  - 3.4
-  - 3.3
+  # - 3.4  FIXME: Enable when https://github.com/pypa/setuptools/issues/951 is fixed
   - 2.7
 
 matrix:
